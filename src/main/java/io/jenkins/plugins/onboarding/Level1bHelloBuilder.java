@@ -6,10 +6,9 @@ import hudson.model.AbstractBuild;
 import hudson.model.BuildListener;
 import hudson.model.Descriptor;
 import hudson.tasks.Builder;
+import java.io.IOException;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
-
-import java.io.IOException;
 
 public class Level1bHelloBuilder extends Builder {
     private final String name;
@@ -24,13 +23,13 @@ public class Level1bHelloBuilder extends Builder {
     }
 
     @Override
-    public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
+    public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener)
+            throws InterruptedException, IOException {
         listener.getLogger().println("Hello " + name);
         return true;
     }
 
     @Extension
     @Symbol("level1b")
-    public static final class DescriptorImpl extends Descriptor<Builder> {
-    }
+    public static final class DescriptorImpl extends Descriptor<Builder> {}
 }

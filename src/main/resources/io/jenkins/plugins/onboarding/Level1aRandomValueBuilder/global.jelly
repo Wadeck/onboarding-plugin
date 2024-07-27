@@ -1,0 +1,16 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core"
+         xmlns:f="/lib/form">
+    <!-- Level 3 -->
+    <f:section title="${%Random value builder}">
+        <f:entry title="${%Step}" field="step">
+            <f:number/>
+        </f:entry>
+        <f:entry title="${%Minimum value}" field="minimumValue">
+            <f:number/>
+        </f:entry>
+        <f:entry title="${%Maximum value}" field="maximumValue">
+            <f:number/>
+        </f:entry>
+    </f:section>
+</j:jelly>
