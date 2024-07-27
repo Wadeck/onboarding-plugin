@@ -1,0 +1,16 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout" xmlns:st="jelly:stapler">
+    <l:layout>
+        <st:include page="sidepanel.jelly" it="${app}"/>
+        <l:main-panel>
+            <l:app-bar title="${%Even random number}"/>
+
+            <p>The value is even.</p>
+
+            <!-- Bonus point-->
+            <j:if test="${it.randomValue % 4 == 0}">
+                <p>And also a multiple of 4.</p>
+            </j:if>
+        </l:main-panel>
+    </l:layout>
+</j:jelly>

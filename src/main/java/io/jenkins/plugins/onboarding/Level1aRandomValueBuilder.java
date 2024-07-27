@@ -19,6 +19,10 @@ public class Level1aRandomValueBuilder extends Builder {
     @Override
     public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
         int randomValue = (int) Math.round(Math.random() * 1000);
+        build.addAction(new Level2aRandomValueAction(randomValue));
+        if (randomValue % 2 == 0) {
+            build.addAction(new Level2bEvenValueAction(randomValue));
+        }
         listener.getLogger().println("Random = " + randomValue);
         return true;
     }
