@@ -4,4 +4,12 @@
     <f:entry title="${%Name}" field="name">
         <f:textbox/>
     </f:entry>
+
+    <!-- level 6b -->
+    <f:entry title="${%Name modifiers}">
+        <f:hetero-list name="nameModifiers" hasHeader="true"
+                       addCaption="Add modifier"
+                       items="${instance.nameModifiers}"
+                       descriptors="${descriptor.allNameModifiers}"/>
+    </f:entry>
 </j:jelly>
