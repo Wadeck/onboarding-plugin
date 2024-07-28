@@ -75,7 +75,14 @@ public class Level4aConnectionBuildStep extends Builder implements SimpleBuildSt
 
     // [Tip] We can also use setter instead of the constructor to bind data
     @DataBoundSetter
-    public void setTargetUrl(String targetUrl) {
+    public void setTargetUrl(String targetUrl) throws Descriptor.FormException {
+        // level 5b
+        String regex = Level5bUrlRestriction.get().getRegex();
+        if (regex != null) {
+            if (!targetUrl.matches(regex)) {
+                throw new Descriptor.FormException("Target URL does not match the globally configured regex: [" + regex + "]", "targetUrl");
+            }
+        }
         this.targetUrl = targetUrl;
     }
 
@@ -127,6 +134,14 @@ public class Level4aConnectionBuildStep extends Builder implements SimpleBuildSt
                 new URI(value);
             } catch (URISyntaxException e) {
                 return FormValidation.error(e, "Target URL is malformed");
+            }
+
+            // level 5b
+            String regex = Level5bUrlRestriction.get().getRegex();
+            if (regex != null) {
+                if (!value.matches(regex)) {
+                    return FormValidation.error("Target URL does not match the globally configured regex: " + regex + "");
+                }
             }
 
             return FormValidation.ok();
