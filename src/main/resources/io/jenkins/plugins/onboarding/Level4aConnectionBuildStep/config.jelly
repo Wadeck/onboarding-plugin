@@ -1,0 +1,23 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core"
+         xmlns:c="/lib/credentials"
+         xmlns:f="/lib/form">
+    <f:entry title="${%Target URL}" field="targetUrl">
+        <f:textbox/>
+    </f:entry>
+
+    <!-- level 4c -->
+    <f:entry title="${%Username}" field="username">
+        <f:textbox/>
+    </f:entry>
+    <f:entry title="${%Password}" field="password">
+        <f:password/>
+    </f:entry>
+
+    <!-- level 4d -->
+    <f:entry title="${%Credential ID}" field="credentialId">
+        <c:select/>
+    </f:entry>
+
+    <f:validateButton title="${%Test connection}" method="validateTargetUrl" with="targetUrl,username,password,credentialId" />
+</j:jelly>
